@@ -4,19 +4,13 @@
 
 ```plantuml
 @startuml
-  actor "ゲストユーザー" as guestUser
-  actor "登録ユーザー" as registeredUser
-  actor "従業員" as employee
-  usecase "旅館予約システム" as system
-  usecase "旅館予約管理システム" as systemAdmin
-  usecase "業務" as work
+  usecase  "旅館予約システム" as mainSys
+  usecase  "旅館予約管理システム" as adminSys
+  database "共通DB" as db
 
   '---------------------------------------
-  guestUser --> system
-  registeredUser --> system
-  system <-- systemAdmin
-  systemAdmin <-- employee
-  work <-- employee
+  mainSys --> db
+  adminSys --> db
 @enduml
 ```
 
