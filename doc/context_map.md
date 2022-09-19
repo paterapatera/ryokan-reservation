@@ -21,38 +21,23 @@
 ```plantuml
 @startuml
   left to right direction
-  rectangle  "旅館予約" as mainSys {
-    usecase "部屋の空き状況を確認できる" as u1
-    usecase "部屋を予約できる" as u2
-    usecase "自身の予約内容を確認できる" as u3
-    usecase "自身の予約をキャンセルできる" as u4
-    usecase "部屋をブックマークできる" as u5
-  }
-  rectangle  "認証" as authSys {
-    usecase "ログイン・ログアウト" as u7
-    usecase "アカウント登録・確認・編集・削除" as u8
-  }
-
-
   '========================================
   rectangle  "ユーザー" as user {
     actor "ゲストユーザー" as guestUser
-  }
-  '========================================
-  user --> u1
-  user --> u2
-  user --> u3
-  user --> u4
-
-
-  '========================================
-  rectangle  "ユーザー" as user {
     actor "登録ユーザー" as registeredUser
   }
   '========================================
-  registeredUser --> u5
-  registeredUser --> u7
-  registeredUser --> u8
+  rectangle  "旅館予約" as mainSys {
+    user --> ("部屋の空き状況を確認できる")
+    user --> ("部屋を予約できる")
+    user --> ("自身の予約内容を確認できる")
+    user --> ("自身の予約をキャンセルできる")
+    registeredUser --> ("部屋をブックマークできる")
+  }
+  rectangle  "認証" as authSys {
+    registeredUser --> ("ログイン・ログアウト")
+    registeredUser --> ("アカウント登録・確認・編集・削除")
+  }
 @enduml
 ```
 
@@ -61,21 +46,29 @@
 ```plantuml
 @startuml
   left to right direction
-  rectangle  "旅館予約管理" as mainSys {
-    usecase "予約内容を確認できる" as u1
-  }
-  rectangle  "認証" as authSys {
-    usecase "ログイン・ログアウト" as u3
-    usecase "アカウント登録・確認・編集・削除" as u4
-  }
-
-
   '========================================
   actor "従業員" as employee
   '========================================
-  employee --> u1
-  employee --> u3
-  employee --> u4
-
+  rectangle  "予約管理" {
+    employee --> ("予約内容を確認できる")
+    employee --> ("予約内容を変更できる")
+    employee --> ("予約内容を削除できる")
+  }
+  rectangle  "部屋管理" {
+    employee --> ("部屋を確認できる")
+    employee --> ("部屋を登録できる")
+    employee --> ("部屋を変更できる")
+    employee --> ("部屋を削除できる")
+  }
+  rectangle  "従業員管理" {
+    employee --> ("従業員を確認できる")
+    employee --> ("従業員を登録できる")
+    employee --> ("従業員を変更できる")
+    employee --> ("従業員を削除できる")
+  }
+  rectangle  "認証" as authSys {
+    employee --> ("ログイン・ログアウト")
+    employee --> ("アカウント登録・確認・編集・削除")
+  }
 @enduml
 ```
