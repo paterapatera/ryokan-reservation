@@ -1,5 +1,6 @@
 <?php
 
+use \App\Http\Controllers\Web;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,4 +33,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    // 従業員管理
+    Route::get('/employees', Web\EmployeeMgr\List\Controller::class)->name('employees.list');
 });

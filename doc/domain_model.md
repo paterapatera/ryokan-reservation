@@ -10,9 +10,36 @@ class 従業員
 ユーザー |o--o{ 予約
 ```
 
--   [部屋](#部屋)
--   [予約](#予約)
--   [ブックマーク](#ブックマーク)
+- [従業員](#従業員)
+- [ユーザー](#ユーザー)
+- [部屋](#部屋)
+- [予約](#予約)
+- [ブックマーク](#ブックマーク)
+
+### 共通ドメイン
+
+```plantuml
+left to right direction
+class "ID" as Id {
+  + string<21, 21>
+  + 形式:nanoid
+}
+class "Eメール" as Email {
+  + string<1, 255>
+  + 形式:メールアドレス
+}
+class "パスワード" as Password {
+  + string<1, 255>
+  + 形式:メールアドレス
+}
+class "平文パスワード" as PlainPassword {
+  + string<6, 127>
+  + 形式:^[A-Za-z0-9\W_-]+$
+}
+class "テキスト" as Text {
+  + string<0, 0>
+}
+```
 
 ### 従業員
 
@@ -21,7 +48,7 @@ left to right direction
 class "従業員" as Employee {
   + ID
   + 名前
-  + メールアドレス
+  + Eメール
   + パスワード
 }
 class "リポジトリ" {
@@ -50,10 +77,15 @@ namespace 事前条件 {
 left to right direction
 class "ユーザー" as User {
   + ID
-  + 名前
   + メールアドレス
   + パスワード
 }
+
+class "名前" as Name {
+  + string<1, 255>
+}
+User --> Name
+
 class "リポジトリ" {
   + 取得(ID)
   + 追加(ユーザー)
@@ -85,12 +117,11 @@ namespace イベント {
 
 ```plantuml
 left to right direction
-class "部屋" as Room
-class "ID" as Id {
-  + nanoid
+class "部屋" as Room {
+  + ID
 }
 class "名前" as Name {
-  + string<1, 256>
+  + string<1, 255>
 }
 class "人数" as NumOfPeople {
   + int<1, 100>
@@ -105,7 +136,6 @@ class "リポジトリ" {
   + 削除(ID)
 }
 
-Room --> Id
 Room --> Name
 Room --> NumOfPeople
 Room --> Available
@@ -133,12 +163,11 @@ namespace イベント {
 ```plantuml
 left to right direction
 class "予約" as Reservation {
+  + ID
   + 部屋ID
   + ユーザーID
+  + Eメール
   + 期間
-}
-class "ID" as Id {
-  + nanoid
 }
 class "予約者名" as Name {
   + string<1, 255>
@@ -147,25 +176,18 @@ class "電話番号" as PhoneNumber {
   + int<11, 14>
   + 形式：電話番号<ハイフン無し>
 }
-class "メールアドレス" as MailAddress {
-  + string<1, 255>
-  + 形式：メール
-}
 class "人数" as NumOfPeople {
   + 部屋.人数と同じ型
 }
 class "リポジトリ" {
-  + 取得(ID)
   + 追加(予約)
   + 更新(予約)
   + 削除(ID)
   + ユーザーによる削除(ユーザー)
 }
 
-Reservation --> Id
 Reservation --> Name
 Reservation --> PhoneNumber
-Reservation --> MailAddress
 Reservation --> NumOfPeople
 Reservation --> Period
 
@@ -188,6 +210,7 @@ namespace 事前条件 {
 ```plantuml
 left to right direction
 class ブックマーク {
+  + ID
   + ユーザーID
   + 部屋ID
 }

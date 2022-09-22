@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Domains\Employee\Employee as DomainEmployee;
+use App\Domains\Employee\Id;
+use App\Domains\Employee\Name;
+use App\Domains\Employee\Password;
+use App\Domains\Employee\Email;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Employee extends Authenticatable
 {
-    use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
 
     public $incrementing = false;
 
@@ -40,8 +40,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -61,4 +59,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    function toDomain(): DomainEmployee
+    {
+        return new DomainEmployee(
+            new Id($this->id),
+            new Name($this->name),
+            new Email($this->email),
+            new Password($this->password),
+        );
+    }
 }
