@@ -36,4 +36,6 @@ Route::middleware([
 
     // 従業員管理
     Route::get('/employees', Web\EmployeeMgr\List\Controller::class)->name('employees.list');
+    Route::get('/employees/create', [Web\EmployeeMgr\Create\Controller::class, 'create'])->name('employees.create');
+    Route::post('/employees', [Web\EmployeeMgr\Create\Controller::class, 'store'])->name('employees.store');
 });

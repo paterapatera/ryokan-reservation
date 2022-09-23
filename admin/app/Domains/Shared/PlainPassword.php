@@ -15,4 +15,9 @@ class PlainPassword extends Text
             throw new DomainException("パスワードに{$reg}以外の文字が使用されました($maskValue)", static::class);
         }
     }
+
+    function jsonSerialize(): mixed
+    {
+        throw new DomainException('平文パスワードが予期せず出力されています。', static::class);
+    }
 }
