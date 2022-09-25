@@ -4,12 +4,12 @@ namespace App\Usecases\EmployeeMgr\EmployeeCreate;
 
 use App\Domains\Employee\Builder;
 use App\Domains\Employee\PreCondition\WhenCreate;
-use App\Domains\Shared\Hasher;
-use App\Domains\Shared\IdGenerator;
+use App\Domains\Shared\{Hasher, IdGenerator};
 use App\Infra\Repositories\Employee\InMemoryRepository;
 
 use function Eloquent\Phony\Kahlan\mock;
 
+// 条件式がない限りサービスのテストはいらないかも
 describe("従業員管理/従業員作成", function () {
     beforeEach(function () {
         $this->repository = new InMemoryRepository();

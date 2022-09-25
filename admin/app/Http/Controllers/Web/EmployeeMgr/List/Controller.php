@@ -10,7 +10,8 @@ class Controller extends WebController
     function __invoke(Service $employeeListService): \Inertia\ResponseFactory|\Inertia\Response
     {
         $output = $employeeListService->run();
-        return inertia('EmployeeMgr/List', [
+
+        return $this->ok('EmployeeMgr/List', [
             'employees' => $output->employees
         ]);
     }

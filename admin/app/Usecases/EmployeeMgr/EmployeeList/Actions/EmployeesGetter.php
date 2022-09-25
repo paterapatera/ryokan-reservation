@@ -2,13 +2,16 @@
 
 namespace App\Usecases\EmployeeMgr\EmployeeList\Actions;
 
-use App\Domains\Employee\Employee;
+use App\Models\Employee;
 use Illuminate\Support\Collection;
 
-interface GetEmployees
+class EmployeesGetter
 {
   /**
    * @return Collection<int, Employee>
    */
-  function run(): Collection;
+  function get(): Collection
+  {
+    return Employee::all();
+  }
 }

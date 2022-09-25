@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infra\Shared;
+namespace App\Infra\Shared\Hasher;
 
 use App\Domains\Shared\Hasher as SharedHasher;
 use App\Domains\Shared\PlainPassword;

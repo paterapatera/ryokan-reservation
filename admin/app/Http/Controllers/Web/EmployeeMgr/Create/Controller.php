@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Web\EmployeeMgr\Create;
 
 use App\Domains\Employee\Exception\DuplicateIdException;
 use App\Http\Controllers\WebController;
-use App\Usecases\EmployeeMgr\EmployeeCreate\Input;
-use App\Usecases\EmployeeMgr\EmployeeCreate\Service;
+use App\Usecases\EmployeeMgr\EmployeeCreate\{Service, Input};
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 
 class Controller extends WebController
@@ -38,6 +36,6 @@ class Controller extends WebController
             dd($e);
         }
 
-        return Redirect::route('employees.list', [], 303);
+        return $this->redirect('employees.list', [], 303);
     }
 }
