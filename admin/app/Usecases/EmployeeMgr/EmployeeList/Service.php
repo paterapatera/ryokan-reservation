@@ -4,7 +4,7 @@ namespace App\Usecases\EmployeeMgr\EmployeeList;
 
 use App\Usecases\EmployeeMgr\EmployeeList\Actions\GetEmployees;
 
-class EmployeeListService
+class Service
 {
   function __construct(private GetEmployees $getEmployees)
   {

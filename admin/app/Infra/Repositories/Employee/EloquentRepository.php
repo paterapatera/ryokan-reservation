@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infra\Repositories;
+namespace App\Infra\Repositories\Employee;
 
 use App\Domains\Employee\Employee;
 use App\Domains\Employee\Id;
@@ -8,7 +8,7 @@ use App\Domains\Employee\Email;
 use App\Domains\Employee\Repository;
 use App\Models\Employee as Model;
 
-class EloquentEmployee implements Repository
+class EloquentRepository implements Repository
 {
     function get(Id $id): Employee
     {

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Web\EmployeeMgr\List;
 
 use App\Http\Controllers\WebController;
-use App\Usecases\EmployeeMgr\EmployeeList\EmployeeListService;
+use App\Usecases\EmployeeMgr\EmployeeList\Service;
 
 class Controller extends WebController
 {
-    function __invoke(EmployeeListService $employeeListService): \Inertia\ResponseFactory|\Inertia\Response
+    function __invoke(Service $employeeListService): \Inertia\ResponseFactory|\Inertia\Response
     {
         $output = $employeeListService->run();
         return inertia('EmployeeMgr/List', [

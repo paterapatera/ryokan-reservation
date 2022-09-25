@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2b3257c81472de0dd217cc8d7da055f",
+    "content-hash": "5b0a0917dcedc18b444d68b6c26268b1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6727,6 +6727,54 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2022-08-31T16:38:14+00:00"
+        },
+        {
+            "name": "midnightsuyama/laravel-kahlan4",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/midnightSuyama/laravel-kahlan4.git",
+                "reference": "a6f0434b6bc523fd9e63453f45248adb11370e48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/midnightSuyama/laravel-kahlan4/zipball/a6f0434b6bc523fd9e63453f45248adb11370e48",
+                "reference": "a6f0434b6bc523fd9e63453f45248adb11370e48",
+                "shasum": ""
+            },
+            "require": {
+                "kahlan/kahlan": "^4.6 || ^5.0",
+                "laravel/framework": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelKahlan4\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "midnightSuyama",
+                    "email": "midnightSuyama@gmail.com"
+                }
+            ],
+            "description": "Kahlan specs suite for Laravel",
+            "homepage": "https://github.com/midnightSuyama/laravel-kahlan4",
+            "keywords": [
+                "Kahlan",
+                "laravel",
+                "testing"
+            ],
+            "support": {
+                "issues": "https://github.com/midnightSuyama/laravel-kahlan4/issues",
+                "source": "https://github.com/midnightSuyama/laravel-kahlan4/tree/2.1.0"
+            },
+            "time": "2022-03-10T16:01:00+00:00"
         },
         {
             "name": "mockery/mockery",

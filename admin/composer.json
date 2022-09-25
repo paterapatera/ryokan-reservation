@@ -21,6 +21,7 @@
         "kahlan/kahlan": "^5.2",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
+        "midnightsuyama/laravel-kahlan4": "^2.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "nunomaduro/larastan": "^2.0",
@@ -58,6 +59,9 @@
         ],
         "spec": [
             "kahlan"
+        ],
+        "spec.m": [
+            "kahlan --config=kahlan-middle-config.php"
         ]
     },
     "extra": {

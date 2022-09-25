@@ -11,6 +11,7 @@ parameters:
 
   excludePaths:
     - app/**/*.spec.php
+    - app/**/*.spec.m.php
   
   ignoreErrors:
       

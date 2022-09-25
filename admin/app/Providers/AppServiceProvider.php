@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Usecases\EmployeeMgr\EmployeeList\Actions\GetEmployees::class, Queries\Employee\GetEmployees::class);
-        $this->app->singleton(Domains\Employee\Repository::class, Repositories\EloquentEmployee::class);
+        $this->app->singleton(Domains\Employee\Repository::class, Repositories\Employee\EloquentRepository::class);
         $this->app->singleton(Domains\Shared\IdGenerator::class, Shared\IdGenerator::class);
         $this->app->singleton(Domains\Shared\Hasher::class, Shared\Hasher::class);
     }
