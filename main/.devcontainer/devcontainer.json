@@ -2,10 +2,10 @@
 {
 	"name": "ryokan-reservation",
 	"dockerComposeFile": [
-		"../docker-compose.yml"
+		"../../docker-compose.yml"
 	],
-	"service": "laravel.test",
-	"workspaceFolder": "/var/www/html",
+	"service": "main",
+	"workspaceFolder": "/var/www/html/main",
 	"settings": {},
 	"extensions": [
 		"mikestead.dotenv",
@@ -20,10 +20,11 @@
 		"onecentlin.laravel5-snippets",
 		"onecentlin.laravel-blade",
 		"Vue.volar",
-		"shd101wyy.markdown-preview-enhanced"
+		"shd101wyy.markdown-preview-enhanced",
+		"esbenp.prettier-vscode"
 	],
-	"remoteUser": "sail",
-	"postCreateCommand": "chown -R 1000:1000 /var/www/html"
+	"remoteUser": "sail"
+	// "postCreateCommand": "chown -R 1000:1000 /var/www/html"
 	// "forwardPorts": [],
 	// "runServices": [],
 	// "shutdownAction": "none",
