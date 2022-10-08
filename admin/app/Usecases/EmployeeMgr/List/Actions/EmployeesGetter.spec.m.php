@@ -13,18 +13,9 @@ describe(EmployeesGetter::class, function () {
 
     describe('前提：従業員が2件存在する', function () {
         beforeEach(function () {
-            Employee::create([
-                'id' => '123456789012345678901',
-                'name' => 'test',
-                'email' => 'test1@test.com',
-                'password' => 'aaaaaa',
-            ]);
-            Employee::create([
-                'id' => '123456789012345678902',
-                'name' => 'test2',
-                'email' => 'test2@test.com',
-                'password' => 'bbbbbb',
-            ]);
+            Employee::factory()
+                ->count(2)
+                ->create();
         });
 
         context('条件：なし', function () {
