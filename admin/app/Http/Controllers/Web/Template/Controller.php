@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Web\EmployeeMgr\List;
+namespace App\Http\Controllers\Web\Template;
 
 use App\Http\Controllers\BaseController;
-use App\Usecases\EmployeeMgr\List\Inputter;
+use App\Usecases\Template\Inputter;
 
 class Controller extends BaseController {
     function __invoke(

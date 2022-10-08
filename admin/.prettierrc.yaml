@@ -1,5 +1,5 @@
 trailingComma: 'all'
-tabWidth: 2
+tabWidth: 4
 printWidth: 100
 semi: false
 singleQuote: true
@@ -9,3 +9,4 @@ overrides:
       phpVersion: '8.1'
       trailingCommaPHP: true
       braceStyle: '1tbs'
+      tabWidth: 4

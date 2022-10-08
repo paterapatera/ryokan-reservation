@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Support\Facades\Redirect;
 
-class WebController extends BaseController {
+class Presenter {
     /**
      * @param array|\Illuminate\Contracts\Support\Arrayable<array-key, mixed> $props
      */
     function ok(
         ?string $compnent = null,
-        array|\Illuminate\Contracts\Support\Arrayable $props,
+        array|\Illuminate\Contracts\Support\Arrayable $props = [],
     ): \Inertia\ResponseFactory|\Inertia\Response {
         return inertia($compnent, $props);
     }

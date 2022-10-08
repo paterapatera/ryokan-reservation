@@ -1,6 +1,6 @@
 <?php
 
-use \App\Http\Controllers\Web;
+use App\Http\Controllers\Web\EmployeeMgr;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,17 +25,22 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(
+    function () {
+        Route::get('/dashboard', function () {
+            return Inertia::render('Dashboard');
+        })->name('dashboard');
 
-    // 従業員管理
-    Route::get('/employees', Web\EmployeeMgr\List\Controller::class)->name('employees.list');
-    Route::get('/employees/create', [Web\EmployeeMgr\Create\Controller::class, 'create'])->name('employees.create');
-    Route::post('/employees', [Web\EmployeeMgr\Create\Controller::class, 'store'])->name('employees.store');
-});
+        // 従業員管理
+        Route::get('/employees', EmployeeMgr\List\Controller::class)->name('employees.list');
+        Route::get('/employees/{id}', EmployeeMgr\Show\Controller::class)
+            ->where('id', '[0-9a-zA-Z]{21}')
+            ->name('employees.show');
+        Route::get('/employees/create', [EmployeeMgr\Create\Controller::class, 'create'])->name(
+            'employees.create',
+        );
+        Route::post('/employees', [EmployeeMgr\Create\Controller::class, 'store'])->name(
+            'employees.store',
+        );
+    },
+);
